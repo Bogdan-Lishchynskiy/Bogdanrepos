@@ -8,11 +8,11 @@ router.get('/poems', function(req, res) {
   
   var info = '';
   var dataFile = req.app.get('appData');
-  dataFile.poems.forEach(function(item) {
+  dataFile.eneida.forEach(function(item) {
     info += `
     
-      <h2>${item.name}</h2>
-      <p>${item.summary}</p>
+      <h2>${item.row}</h2>
+      <p>${item.text}</p>
     
     `;
   });
@@ -25,14 +25,12 @@ router.get('/poems', function(req, res) {
  
 router.get('/poems/:poemid', function(req, res) {
 var dataFile = req.app.get('appData');  
-var poem = dataFile.poems[req.params.poemid]; 
+var poem = dataFile.eneida[req.params.poemid]; 
   
    
   res.send(`
-      <h1>${poem.title}</h1>
-	  <h2>${poem.name}</h2>
-	  <h3>${poem.shortname}</h3>
-      <p>${poem.summary}</p>
+	  <h3>${poem.row}</h3>
+      <p>${poem.text}</p>
   `);
 }); 
 
